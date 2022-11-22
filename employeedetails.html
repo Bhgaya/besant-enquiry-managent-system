@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>employee details</title>
+    <script src="https://kit.fontawesome.com/4f34309f57.js"></script>
+    <style>
+        #navigation{
+            background-color:red; padding: 20px;
+        }
+        nav{
+            display: grid;
+            grid-template-columns:50% 30% 2% 10%;
+        }
+        #admin{
+            color:white;
+        }
+        th,td{
+            text-align: justify;
+            border:1px solid black;
+            padding:8px;
+            width:100px;
+        }
+        #employeelist{
+            display: none;
+        }
+        #fullform{
+            border: 1px solid black;
+            margin: 50px;
+            margin-left: 600px;
+            margin-right: 600px;
+            padding-bottom: 20px;
+            text-align: center;
+            background-color: azure;
+            display: none;
+        }
+        #editform{
+            display: grid;
+            grid-template-columns: 80% 20%;
+            background-color: black;
+            color: white;
+        } 
+        #icons{
+            margin-left: 350px;
+            display: flex;
+            display: inline-flex;
+            
+        }
+        #icons p{
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: -1px;
+            text-align: center;
+        }
+        #createlist{
+            display: inline-flex;
+        }
+        #createlist p{
+            padding: 10px;
+            border: 1px solid black;
+            background-color: whitesmoke;
+            color: black;
+        }
+        #employeelist{
+            margin-left: 500px;
+        }
+        #short{
+            margin-left: 500px;
+        }
+        #short span{
+            background-color: black;
+            color: white;
+            padding: 10px;
+            padding-right: 100px;
+            font-size: 20px;
+        }
+        #employeelist h1{
+            background-color: black;
+            color: white;
+            padding: 10px;
+            margin-right: 550px;
+        }
+        #addemployee{
+            background-color: orangered;
+            width: 100px;
+            color: white;
+        }
+    </style>
+
+<body>
+    <div id="navigation">
+        <nav>
+            <header style="color: white; font-size: 20px;">Besant Technology</header>
+            <input style="border:20px; width:300px; background-color:black; color:white; border-radius: 20px;" type="search" placeholder="search">
+            <i class="fa-solid fa-user"></i>
+            <select>
+                <option>admin</option>
+                <option>user</option>
+            </select>
+        </nav>
+    </div>
+    <div id="icons">
+        <p><i class="fa-solid fa-gauge-high" style="font-size: 40px;"> </i><br><br>dashboard</p>
+        <p><i class="fa fa-bullhorn" aria-hidden="true" style="font-size: 40px;"></i><br><br>Branch</p>
+        <p><i class="fas fa-users" style="font-size: 40px;"></i><br><br>employee</p>
+        <p><i class="fa fa-tasks" aria-hidden="true" style="font-size: 40px;"></i><br><br>employee roles</p>
+        <p><i class="fa-solid fa-rss" style="font-size: 40px;"></i><br><br>enquiry source</p>
+        <p><i class="fa-solid fa-crosshairs" style="font-size: 40px;"></i><br><br>enquiry status</p>
+        <p><i class="fa fa-users" aria-hidden="true" style="font-size: 40px;"></i><br><br>customer</p>
+        <p><i class="fa fa-arrow-up" aria-hidden="true" style="font-size: 40px;"></i><br><br>followups</p>
+        <p><i class="fa-sharp fa-solid fa-user-doctor" style="font-size: 40px;"></i><br><br>report</p>
+    </div>
+     <br>
+     <br>
+    <div id="short">
+        <span><i class="fa-sharp fa-solid fa-star"></i>important Shortcuts</span><br>
+            <div id="createlist">
+                <p><i class="fa fa-users" aria-hidden="true" style="font-size: 40px;"></i><br>Employee</p>
+                <p><i class="fa-solid fa-bookmark" style="font-size: 40px;"></i><br>customer</p>
+                <p><i class="fa-brands fa-hive" style="font-size: 40px;"></i><br>employee roles</p>
+            </div>
+    </table>
+</div>
+    <div id="employeelist">
+        <h1>Employee Management</h1>
+        <table id="employeess">
+            <thead>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                </tr> 
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table><br><br>
+        <button id="addemployee">Add Employee</button>
+    </div>
+    <div id="fullform">
+    <div id="editform">
+        <main>Edit Employee Details</main>
+            <main>Back</main>
+    </div>
+            <br><br>
+            <form onsubmit="onFormSubmit()">
+                <label>Name*</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label>Phone Number*</label>
+                <input type="tel" id="mobile" name="mobile" maxlength="10" required><br><br>
+                <label>Email Address*</label>
+                <input type="email" id="email" name="email" required><br><br>
+                <input type="submit" value="Add" id="add">
+            </form>
+    </div>
+</div>
+    <script>
+        var short=document.getElementById("short") // employee list
+        var createlist=document.getElementById("createlist")
+        var employeelist=document.getElementById("employeelist")
+        createlist.addEventListener("click",createemployeelist)
+        function createemployeelist(){
+            employeelist.style.display="block"
+            short.style.display="none"
+        }
+
+        var addemployee=document.getElementById("addemployee")
+        var fullform=document.getElementById("fullform")
+        addemployee.addEventListener("click",fullemployeeform)
+        function fullemployeeform(){
+            fullform.style.display="block"
+        }
+
+        addemployee.addEventListener("click",a)
+        function a(){
+            employeelist.style.display="none"
+        }
+
+        var add=document.getElementById("add")
+        add.addEventListener("click",b)
+        function b(){
+            employeelist.style.display="block"
+            fullform.style.display="none"
+        }
+
+      /* var submit=document.getElementById("submit")
+        submit.addEventListener("click",submitemployeedetails)
+        function submitemployeedetails(){
+            employeelist.style.display="block"
+        }*/
+
+        var selectedRow=null
+        function onFormSubmit(){
+            event.preventDefault()
+            var formData=readFormData()
+            if(selectedRow === null){
+            insertNewRow(formData)
+            }
+            else{
+            updateForm(formData)
+             }
+            resetForm()
+        }
+
+        function readFormData(){
+            var formData={}
+            formData["name"]=document.getElementById("name").value
+            formData["mobile"]=document.getElementById("mobile").value
+            formData["email"]=document.getElementById("email").value
+            return formData
+        }
+
+        
+        function insertNewRow(data){
+            var table=document.getElementsByTagName("tbody")[0]
+            var row=table.insertRow(table.length)
+
+            cell1=row.insertCell(0)
+            cell1.innerHTML=data.name
+            
+            cell2=row.insertCell(1)
+            cell2.innerHTML=data.mobile
+            
+
+            cell3=row.insertCell(2)
+            cell3.innerHTML=data.email
+
+            cell4=row.insertCell(3)
+            cell4.innerHTML=`<a onClick="onEdit(this)" id="edit">Edit</a> / <a onClick="onDelete(this)">delete</a>`
+
+        }
+
+        function resetForm(){
+            document.getElementById("name").value=""
+            document.getElementById("mobile").value=""
+            document.getElementById("email").value=""
+        }
+
+        function onEdit(td){
+            selectedRow=td.parentElement.parentElement;
+            document.getElementById("name").value=selectedRow.cells[0].innerHTML
+            document.getElementById("mobile").value=selectedRow.cells[1].innerHTML
+            document.getElementById("email").value=selectedRow.cells[2].innerHTML
+        }
+
+        function updateForm(data){
+            selectedRow.cells[0].innerHTML=data.name
+            selectedRow.cells[1].innerHTML=data.mobile
+            selectedRow.cells[2].innerHTML=data.email
+            
+        }
+
+        function onDelete(td){
+            selectedRow=td.parentElement.parentElement;
+            document.getElementById("employeess").deleteRow(selectedRow.rowIndex)
+        }
+        
+    </script>  
+</body>
+</html>

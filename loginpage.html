@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        h1{
+            background-color: orangered;
+            color: white;
+            padding: 20px;
+        }
+        div{
+            border: 1px solid black;
+            margin-left: 500px;
+            margin-right: 650px;
+            padding: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Besant Technology</h1>
+    <div>
+        <form>
+        <h2>Admin Login Page</h2>
+        <p>Please provide your details</p>
+        <label>User Name</label>
+        <input type="text" placeholder="UserName" id="name"><br><br>
+        <label>Password</label>
+        <input type="password" placeholder="password" id="password"><br><br>
+        <input type="button" onclick="login()" value="login">
+    </form>
+    </div>
+
+    <script>
+        function login(){
+            const a=document.getElementById("name").value
+            const b=document.getElementById("password").value
+
+            if(a.length<4){
+                alert("wrong username")
+            }
+            else if(b.length<4){
+                alert("error")
+            }
+            else{
+                alert("logind successfully")
+                myform()
+            }
+        }
+
+        function myform(){
+            window.location.href="employeedetails.html"
+        }
+
+
+    </script>
+    
+</body>
+</html>

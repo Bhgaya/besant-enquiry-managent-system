@@ -1,0 +1,59 @@
+table{
+    width: 70%;
+}
+th,td{
+    border: 1px solid black;
+            padding: 20px;
+}
+#employee{
+    display: none;
+}
+#employeelist{
+    display: none;
+}
+.header{
+    background-color: orangered;
+    height: 40px;
+    padding-top: 20px;
+    padding-left: 30px;
+    color: white;
+    font-size: 20px;
+}
+.log{
+    border: 1px solid black;
+    padding: 10px;
+    margin-left: 500px;
+    margin-right: 700px;
+}
+#besant{
+    display: grid;
+    grid-template-columns: 50% 20% 20%;
+    background-color: orangered;
+    border-spacing: 20px;
+    padding: 10px;
+    padding-top: 20px;
+    padding-left: 30px;
+    color: white;
+    font-size: 20px;
+}
+
+#black main{
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+#black{
+    border: 1px solid black;
+    margin: 50px;
+    margin-left: 400px;
+    margin-right: 400px;
+    text-align: center;
+    background-color: azure;
+}
+#black div{
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+#black form{
+    padding: 50px;
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/43df530aea.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="project9.css">
+    <title>Employee Details</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div>
+    <header id="head">Besant Technology Employees</header><br><br>
+    <div id="login">
+        <h1>Admin Login Area</h1>
+        <span>Please provide your Details</span><br><br>
+        <label>Username</label>
+        <input type="text" placeholder="Username"><br><br>
+        <label>password</label>
+        <input type="password" placeholder="password"><br><br>
+        <input type="submit" value="login" id="login"><br><br>
+    </div>
+            <div id="employee">
+            <div id="besant">
+            <header id="head">Besant Technology Employees</header>
+            <input style="border:20px; width:300px; background-color:black; color:white; border-radius: 20px;" type="search" placeholder="search">
+            <label><i class="fa fa-user" aria-hidden="true"></i>Admin</label>
+                </div>
+                <div id="black">
+            <div>
+            <main>Edit Employee Details</main>
+            <main>Back</main>
+                </div>
+            <br><br>
+            <form onsubmit="onFormSubmit()">
+                <label>Name*</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label>Phone Number*</label>
+                <input type="tel" id="mobile" name="mobile" maxlength="10" required><br><br>
+                <label>Email Address*</label>
+                <input type="email" id="email" name="email" required><br><br>
+                <label>Permanent Address*</label>
+                <input type="text"><br><br>
+                <label>Aadhar*</label>
+                <input type="number" maxlength="12"><br><br>
+                <label>Employee Role*</label>
+                <select type="">
+                    <option>select</option>
+                    <option>Manger</option>
+                    <option>Executive</option>
+                </select><br><br>
+                <label>Employee Branch*</label>
+                <select>
+                    <option>select</option>
+                    <option>Bangalore</option>
+                    <option>Chennai</option>
+                </select><br><br>
+                <label>password*</label>
+                <input type="password" placeholder="password" id="password"><br><br>
+                <input type="password" placeholder="cpassword" id="cpassword">
+                <label>Active*</label>
+                <input type="checkbox"><br><br>
+                <input type="submit" value="Add" onclick="na()" id="submit">
+            </form>
+        </div>
+            <div id="employeelist">
+                <h1>Employee Management</h1>
+                <table id="employeess">
+                    <thead>
+                        <tr>
+                            <th>Employee Name</th>
+                            <th>Phone Number</th>
+                            <th>Email</th>
+                            <th>Edit</th>
+                        </tr> 
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table><br><br>
+                <button id="addemployee">Add Employee</button>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        const admin=document.getElementById("login")
+        admin.classList.add("log")
+        const he=document.getElementById("head")
+        he.classList.add("header")
+
+        function na(){
+        var a=document.getElementById("name").value
+        var b=document.getElementById("password").value
+        var c=document.getElementById("cpassword").value
+        if(a>5){
+            alert("greater than 5 letters")
+        }
+        else if(b != c){
+            alert("password not match")
+        }
+        else{
+            alert("successfully login")
+        }
+    }
+
+
+        var addemployee=document.getElementById("addemployee")
+        var addemplo=document.getElementById("employee")
+        addemployee.addEventListener("click",addemp)
+        function addemp(){
+                addemplo.style.display="block"
+        }
+        /*var emp=document.getElementById("employee") //employement function//
+        function employeeDetails(){
+            emp.style.display="block"
+        }*/
+
+        var login=document.getElementById("login")
+        var emp=document.getElementById("employee")
+        login.addEventListener("click",employeeDetails)
+        function employeeDetails(){
+            emp.style.display="block"
+            login.style.display="none"
+        }
+
+        var submit=document.getElementById("submit")
+        var empli=document.getElementById("employeelist")
+        submit.addEventListener("click",emplist)
+        function emplist(){
+            empli.style.display="block"
+        }
+
+
+        var selctedRow=null
+        function onFormSubmit(){
+            event.preventDefault()
+           var formData=readFormData()
+           if(selctedRow === null){
+            insertNewRow(formData)
+           }
+            else{
+                updateForm(formData)
+            }
+            resetForm()
+        }
+
+        function readFormData(){
+            var formData={}
+            formData["name"]=document.getElementById("name").value
+            formData["mobile"]=document.getElementById("mobile").value
+            formData["email"]=document.getElementById("email").value
+            return formData
+        }
+
+        function insertNewRow(data){
+            var table=document.getElementsByTagName("tbody")[0]
+            var row=table.insertRow(table.length)
+
+            cell1=row.insertCell(0)
+            cell1.innerHTML=data.name
+            
+            cell2=row.insertCell(1)
+            cell2.innerHTML=data.mobile
+            
+            cell3=row.insertCell(2)
+            cell3.innerHTML=data.email
+
+            cell4=row.insertCell(3)
+            cell4.innerHTML=`<a onClick="onEdit(this)">Edit</a> / <a onClick="onDelete(this)">Delete</a>`
+        }
+
+        function resetForm(){
+            document.getElementById("name").value=""
+            document.getElementById("mobile").value=""
+            document.getElementById("email").value=""
+        }
+
+        function onEdit(td){
+            selctedRow=td.parentElement.parentElement
+            document.getElementById("name").value=selctedRow.cells[0].innerHTML
+            document.getElementById("mobile").value=selctedRow.cells[1].innerHTML
+            document.getElementById("email").value=selctedRow.cells[2].innerHTML
+        }
+
+        function updateForm(data){
+            selctedRow.cells[0].innerHTML=data.name
+            selctedRow.cells[1].innerHTML=data.mobile
+            selctedRow.cells[2].innerHTML=data.email
+        }
+
+        function onDelete(td){
+            selctedRow=td.parentElement.parentElement;
+            document.getElementById("employeess").deleteRow(selectedRow.rowIndex)
+        }
+    </script>
+    
+</body>
+</html>
